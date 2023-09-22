@@ -8,7 +8,7 @@ const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products.js");
 const users = require("./routes/users")
 const result = require("./routes/uploadRouter")
-
+const path = require('path');
 const products = require("./products");
 
 const cloudinary = require("./utils/cloudinary");
@@ -51,6 +51,13 @@ app.post("/upload", (req, res) => {
   res.send(upload);
 });
 
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 const uri = process.env.DB_URI;
 const port = process.env.PORT || 5000;
