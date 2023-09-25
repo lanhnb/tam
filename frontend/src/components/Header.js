@@ -5,11 +5,14 @@ import Nav from './Nav';
 import NavBar from './NavBar';
 
 
+
 function Header() {
   return (
     <MainHeader>
        
         <NavBar/>
+      
+       
        
     </MainHeader>
   )

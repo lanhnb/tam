@@ -67,16 +67,17 @@
 .nav-bar {
   position: sticky;
   top: 0;
-  height: 70px;
-  background: black;
+  height: 45px;
+  background: #232f3e;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 4rem;
+  
 }
 .nav-bar a {
   text-decoration: none;
   color: white;
+  font-size: 17px;
 }
 .nav-bar h2 {
   font-size: 40px;
@@ -85,6 +86,7 @@
 .nav-bag {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 .bag-quantity {
   display: flex;
@@ -98,8 +100,11 @@
   font-weight: 700;
   color: black;
   margin-left: 5px;
+  
 }
-
+div#mySidebar {
+  z-index: 1000;
+}
 /* Home */
 .w3-container {
   padding: 0.01em 0px;
@@ -397,3 +402,37 @@ section.sc-pqitP.jhJdkj {
 section.sc-csmVar.bSrPup {
   padding-right: 1px;
 }
+
+img.menu1 {
+  height: 30px;
+}
+img.logo1 {
+  height: 30px;
+  margin-left: 20px;
+  margin-bottom: 11px;
+}
+
+a.menu11 {
+  margin-left: 20px;
+}
+img.w3-circle {
+  width: 55px;
+}
+a.lanb {
+  margin-right: 15px;
+}
+.container-fluid.foots {
+  background-color: #232f3e;
+}
+b.l1 {
+  color: white;
+  margin-left: 10px;
+}
+
+p.text-center.p_f {
+  color: white;
+}
+a#openClose {
+  font-size: 33px;
+}
+

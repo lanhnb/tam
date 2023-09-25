@@ -1,22 +1,58 @@
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { logoutUser } from "./slices/authSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { FaCartPlus } from "react-icons/fa";
+import { FaFighterJet } from "react-icons/fa";
+import { FaHive } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
+import { FaTimes} from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+
 
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
+  
+  const navigate = useNavigate();
+  const [isShown, setIsShown] = useState(false);
+  const [isShown1, setIsShown1] = useState(false);
+  const [hideF, sethideF] = useState(true)
+  const handleClick = event => {
+      // 👇️ toggle shown state
+      setIsShown1(current => !current);
 
-  console.log(auth);
+      // 👇️ or simply set it to true
+      // setIsShown(true);
+      navigate("/")
 
-  return (
+  };
+
+  
+
+
+ 
+
+  return (<>
     <nav className="nav-bar">
-      <Link to="/">
-        <h2>OnlineShop</h2>
+      <Link className="menu11">
+
+      
+        <Link id="openClose" onClick={handleClick}><span  onClick={()=>sethideF(!hideF)}>
+                {hideF ? <FaList /> : <FaTimes/>}
+                </span>
+          
+        </Link>
+        <Link to="/">
+          <img src="https://res.cloudinary.com/dxnhv54sl/image/upload/v1695431219/logo/epiu3addc0ing9mk4l2p.png" className="logo1" alt="logo1" />
+        </Link>
       </Link>
+
       <Link to="/cart">
         <div className="nav-bag">
           <svg
@@ -33,36 +69,73 @@ const NavBar = () => {
             <span>{cartTotalQuantity}</span>
           </span>
         </div>
-      </Link>
-      {auth._id ? (
-        <Links>
-          {auth.isAdmin ? (
-            <div>
-              <Link to="/admin/summary">Admin</Link>
-            </div>
-          ) : null}
-          <div
-            onClick={() => {
-              dispatch(logoutUser(null));
-              toast.warning("Logged out!", { position: "bottom-left" });
-            }}
-          >
-            Logout
-          </div>
-        </Links>
-      ) : (
-        <AuthLinks>
-          <Link to="/login">Login</Link>
-          <Link to="register">Register</Link>
-        </AuthLinks>
-      )}
+        </Link>
+        <Link to="/" className="lanb">Lanhnb.store</Link>
     </nav>
-  );
+ 
+  {
+    isShown1 && (
+      <div id="mySidebar" className="w3-sidebar w3-bar-block w3-border-right w3-animate-left"
+      >
+          <Link to="/" className="w3-bar-item w3-button w3-border-bottom w3-large">
+              <img className="w3-circle" src="https://res.cloudinary.com/dxnhv54sl/image/upload/v1695458829/logo/tjxcmynwrh3tiwqmx9yg.jpg" alt='name' /></Link>
+          
+          
+          <Link to="/" className="w3-bar-item w3-button w3-red">Home</Link>
+          <Link to="/nhadat" className="w3-bar-item w3-button"> <FaHive/>  Nhà đất</Link>
+          <Link to="/xkld" className="w3-bar-item w3-button"><FaFighterJet/>  Xuất khẩu lao động</Link>
+          <Link to="/shop" className="w3-bar-item w3-button"><FaCartPlus /> Shop</Link>
+          <Link to="/contact" className="w3-bar-item w3-button"><FaCartPlus /> Contact</Link>
+          
+                          
+                  {auth._id ? (
+                      <Links>
+
+                          {auth.isAdmin ? (
+                              <div>
+                                  <Link to="/admin/summary">Admin</Link>
+                              </div>
+                          ) : null}
+                          <div
+                              onClick={() => {
+                                  dispatch(logoutUser(null));
+                                  toast.warning("Logged out!", { position: "bottom-left" });
+                              }}
+                          >
+                              Logout
+                          </div>
+                      </Links>
+                  ) : (
+                      <AuthLinks>
+                        <p>
+                          <Link to="/login">Login</Link>
+                          </p>
+                          <Link to="register">Register</Link>
+                          
+                      </AuthLinks>
+                  )}
+              
+          
+          <Link to="/modals" className="w3-bar-item w3-button w3-red" >Chính
+              sách website</Link>
+      </div>
+      
+)
+  }
+  
+  
+
+  </>
+  )
 };
 
 export default NavBar;
 
 const AuthLinks = styled.div`
+
+.lanb{
+  font-size:17px;
+}
   a {
     &:last-child {
       margin-left: 2rem;
@@ -81,4 +154,7 @@ const Links = styled.div`
       margin-left: 2rem;
     }
   }
+  img.logo1 {
+    height: 35px;
+}
 `;

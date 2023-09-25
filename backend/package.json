@@ -6,6 +6,7 @@
     "cloudinary": "^1.40.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "joi": "^17.10.1",
     "jsonwebtoken": "^9.0.2",
@@ -27,12 +28,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build"
   },
   "keywords": [
     "nodemon"
   ],
   "author": "lanhnb",
-  "license": "ISC",
-  "devDependencies": {}
+  "license": "ISC"
 }

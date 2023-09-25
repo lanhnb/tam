@@ -7,8 +7,8 @@ import { useState } from 'react'
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import FilterSmal from "./FilterSmal";
 import FilterSection from "./FilterSection";
-import { TiFilter } from "react-icons/ti";
-import { TiDeleteOutline } from "react-icons/ti";
+import { FcClearFilters } from "react-icons/fc";
+import { FcFilledFilter } from "react-icons/fc";
 
 const GridView = ({ products }) => {
 
@@ -29,7 +29,7 @@ const GridView = ({ products }) => {
                 
             
             <button className="b11" onClick={handleClick}><span onClick={()=>sethideF(!hideF)}>
-                {hideF ? <TiDeleteOutline /> : <TiFilter/>}
+                {hideF ? <FcClearFilters /> : <FcFilledFilter/>}
                 </span></button>
             </div>
             <div className="row">

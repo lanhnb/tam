@@ -53,134 +53,139 @@ const FilterSmal = () => {
     return (
         <Wrapper>
             <div className="productCaroul">
-                
 
-                    <Swiper
-                        pagination={{
-                            type: 'progressbar',
-                        }}
-                        navigation={true}
-                        modules={[Pagination, Navigation]}
-                        className="mySwiper"
-                    >
-                        <SwiperSlide><div className="col col-12">
-                            <div className="filter-search">
-                                <p className="byName">Filter by names</p>
-                                <form onSubmit={(e) => e.preventDefault()}>
-                                    <input
-                                        type="text"
-                                        name="text"
-                                        value={text}
-                                        placeholder="Search"
-                                        onChange={updateFilterValue}
 
-                                    />
-                                </form>
+                <Swiper
+                    pagination={{
+                        type: 'progressbar',
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper"
+                >
+                    <SwiperSlide><div className="col col-12">
+                        <div className="filter-search">
+                            <p className="byName">Filter by names</p>
+                            <form onSubmit={(e) => e.preventDefault()}>
+                                <input
+                                    type="text"
+                                    name="text"
+                                    value={text}
+                                    placeholder="Search"
+                                    onChange={updateFilterValue}
+
+                                />
+                            </form>
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className="col col-12">
+                        <div className="filter-category">
+                            <h3> Category</h3>
+                            <div className="category_btn">
+                                {categoryData.map((curElem, index) => {
+                                    return (<button
+                                        key={index}
+                                        type="button"
+                                        name="category"
+                                        value={curElem}
+                                        onClick={updateFilterValue}
+                                        className={curElem === category ? "active" : ""}
+                                    >{curElem}</button>
+                                    );
+                                })
+
+                                }
                             </div>
-                        </div></SwiperSlide>
-                        <SwiperSlide><div className="col col-12">
-                            <div className="filter-category">
-                                <h3> Category</h3>
-                                <div className="category_btn">
-                                    {categoryData.map((curElem, index) => {
-                                        return (<button
-                                            key={index}
-                                            type="button"
-                                            name="category"
-                                            value={curElem}
-                                            onClick={updateFilterValue}
-                                            className={curElem === category ? "active" : ""}
-                                        >{curElem}</button>
-                                        );
-                                    })
 
-                                    }
-                                </div>
-
-                            </div>
-                        </div></SwiperSlide>
-                        <SwiperSlide><div className="col col-12">
-                            <div className="filter-company">
-                                <h3> Company</h3>
-                                <form action="#">
-                                    <select
-                                        name="company"
-                                        id="company"
-                                        className="filter-company-select"
-                                        onClick={updateFilterValue}>
-                                        {
-                                            companyData.map((curElem, index) => {
-                                                return (
-                                                    <option value={curElem} name="company" key={index}>{curElem}</option>
-                                                )
-
-                                            })
-                                        }
-
-                                    </select>
-                                </form>
-                            </div>
-                        </div></SwiperSlide>
-                        <SwiperSlide><div className="col col-12">
-                            <div className="filter-color1">
-                                <h3> Colors</h3>
-                                <div className="filter-color-style">
-                                    {colorsData.map((curColor, index) => {
-                                        if (curColor === "All") {
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className="col col-12">
+                        <div className="filter-company">
+                            <h3> Company</h3>
+                            <form action="#">
+                                <select
+                                    name="company"
+                                    id="company"
+                                    className="filter-company-select"
+                                    onClick={updateFilterValue}>
+                                    {
+                                        companyData.map((curElem, index) => {
                                             return (
-                                                <button
-                                                    key={index}
-                                                    value={curColor}
-                                                    type="button"
-                                                    name="color"
-                                                    // style={{ backgroundColor: curColor }}
-                                                    className="btnStyle1"
-                                                    onClick={updateFilterValue}>
-                                                    All
-                                                </button>
-                                            );
-                                        }
+                                                <option value={curElem} name="company" key={index}>{curElem}</option>
+                                            )
+
+                                        })
+                                    }
+
+                                </select>
+                            </form>
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className="col col-12">
+                        <div className="filter-color1">
+                            <h3> Colors</h3>
+                            <div className="filter-color-style">
+                                {colorsData.map((curColor, index) => {
+                                    if (curColor === "All") {
                                         return (
                                             <button
                                                 key={index}
                                                 value={curColor}
                                                 type="button"
                                                 name="color"
-                                                style={{ backgroundColor: curColor }}
-                                                className="btnStyle"
+                                                // style={{ backgroundColor: curColor }}
+                                                className="btnStyle1"
                                                 onClick={updateFilterValue}>
-                                                {color === curColor ? <FaCheck className='checkStyle' /> : null}
+                                                All
                                             </button>
                                         );
+                                    }
+                                    return (
+                                        <button
+                                            key={index}
+                                            value={curColor}
+                                            type="button"
+                                            name="color"
+                                            style={{ backgroundColor: curColor }}
+                                            className="btnStyle"
+                                            onClick={updateFilterValue}>
+                                            {color === curColor ? <FaCheck className='checkStyle' /> : null}
+                                        </button>
+                                    );
 
-                                    })}
-                                </div>
+                                })}
                             </div>
-                        </div></SwiperSlide>
-                        <SwiperSlide><div className="col col-12">
-                            <div className="filter_price">
-                                <h3>Price</h3>
-                                <p><FormatPrice price={price} /></p>
-                                <p>
-                                    <input
-                                        name="price"
-                                        type="range"
-                                        min={minPrice}
-                                        max={maxPrice}
-                                        value={price}
-                                        onChange={updateFilterValue} />
-                                </p>
-                            </div>
-
-                            <div className="Clear_button">
-                                <Button className="btn" onClick={clearFilters}>Clear Filter</Button>
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className="col col-12">
+                        <div className="filter_price">
+                            <h3>Price</h3>
+                            <p><FormatPrice price={price} /></p>
+                            <p>
+                                <input
+                                    name="price"
+                                    type="range"
+                                    min={minPrice}
+                                    max={maxPrice}
+                                    value={price}
+                                    onChange={updateFilterValue} />
+                            </p>
+                        </div>
 
 
-                            </div>
-                        </div></SwiperSlide>
-                        {/* <SwiperSlide></SwiperSlide> */}
+                    </div></SwiperSlide>
+                    <SwiperSlide>
+                        
+                        <div className="Clear_button">
+                        <p>Clear Filter</p>
+                            <Button className="btn" onClick={clearFilters}>Clear Filter</Button>
 
-                    </Swiper>
+                        </div>
+                    </SwiperSlide>
+
+                    {/* <SwiperSlide></SwiperSlide> */}
+
+                </Swiper>
 
 
 
@@ -188,8 +193,8 @@ const FilterSmal = () => {
 
 
 
-                </div>
-           
+            </div>
+
 
         </Wrapper >
 
@@ -211,7 +216,7 @@ const Wrapper = styled.section`
     margin-left: -13px;
 }
 .swiper-button-prev {
-    margin-top: -83px;
+    margin-top: -64px;
     color:red;
     
 }
@@ -223,7 +228,7 @@ const Wrapper = styled.section`
 .swiper-button-next.swiper-button-disabled {}
 
 .swiper-button-next {
-    margin-top: -83px;
+    margin-top: -64px;
     color:red;
 }
 
@@ -257,9 +262,11 @@ const Wrapper = styled.section`
         font-size: bold;
     }
     .filter-category{
+        margin-top: -24px;
         margin-left:20px;
+        margin-right:30px;
         .category_btn{
-            display:grid;
+            display:inline;
             
             button{
             background:none;
@@ -267,16 +274,19 @@ const Wrapper = styled.section`
             cursor:pointer;
             text-align:left;
             font-size:16px;
+            margin-left:30px;
            }
         }
         
         
     }
+    .filter_price {
+        margin-top: -24px;
+    }
     .filter-search{
-        
-        input{
-            margin-top:60px;
-            padding: 0.6rem 1rem;
+        margin-top:30px
+        input{           
+            padding: 5px;
             width:300px;
             border-radius:5px;
         }
@@ -284,7 +294,8 @@ const Wrapper = styled.section`
     }
 
     .filter-color1{
-        margin-left:60px;
+        margin-top: -24px;
+        margin-left:20px;
         .filter-color-style{
             button.btnStyle {
                 width:2rem;
@@ -308,7 +319,8 @@ const Wrapper = styled.section`
         }
     }
     .filter-company{
-        margin-left:60px;
+        margin-top: -24px;
+        margin-left:30px;
         .filter-company-select{
             cursor:pointer;
             option{
@@ -317,12 +329,13 @@ const Wrapper = styled.section`
             
         }
         select#company {
-            width: 260px;
+            width: 200px;
             padding:5px;
         }
 
     }
     .Clear_button{
+        font-size:18px;
         .btn{
             background-color:red;
             width: 150px;

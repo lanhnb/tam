@@ -20,7 +20,7 @@ import Cart from "./components/Cart";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-
+import Contact from './components/Contact';
 
 import Dashboard from "./components/admin/summary-components/Dashboard";
 import Product from "./components/admin/Detail/Product";
@@ -34,6 +34,9 @@ import Products from "./components/admin/summary-components/Products";
 import Orders from "./components/admin/summary-components/Order";
 import OrdersDetail from "./components/admin/Detail/OrderDetail";
 import OrderList from "./components/admin/list/Orderlist";
+import Modals from './components/Modals';
+import Foots from "./components/foot";
+
 
 
 
@@ -73,12 +76,15 @@ const App = () => {
       <Router>
         <GlobalStyle />
         <Header />
+
         <ToastContainer />
        
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/modals" element={<Modals />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<Contact/>} />
           <Route path="/singleproduct/:id" element={<SingleProduct />} />
           {/* <Route path="/checkout-success" element={<CheckoutSuccess />} /> */}
           <Route path="/register" element={<Register />} />
@@ -102,6 +108,7 @@ const App = () => {
           
 
         </Routes>
+        <Foots/>
 
       </Router>
     </ThemeProvider>
